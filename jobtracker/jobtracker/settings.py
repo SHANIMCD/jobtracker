@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jobs'
+    'jobs',
+    'frontend',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -78,6 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'HOST':'localhost',
+        'PORT':4500
+        
     }
 }
 
@@ -119,3 +124,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'jwt_auth.authentication.JWTAuthentication',
+    #     'rest_framework.authentication.BasicAuthentication',
+    # ],
+}
+
+# AUTH_USER_MODEL = 'jwt_auth.User'

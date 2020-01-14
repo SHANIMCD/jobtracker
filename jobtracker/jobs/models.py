@@ -8,7 +8,7 @@ class CompanyInfo(models.Model):
    company_name = models.CharField(max_length=100)
    Address = models.TextField(max_length=500)
    Industry = models.CharField(max_length=100)
-   company_url = models.CharField(max_length=200)
+   
 
    def __str__(self):
        return self.company_name
@@ -28,7 +28,7 @@ class JobInfo(models.Model):
     post_url = models.CharField(max_length=200)
     resource_url = models.CharField(max_length=200)
     Description = models.TextField(max_length=500)
-    job_stage = models.ForeignKey(
+    job_status = models.ForeignKey(
         jobStatus,
         related_name='jobs',
         on_delete=models.DO_NOTHING,
@@ -43,4 +43,3 @@ class JobInfo(models.Model):
 
     def __str__(self):
         return self.job_title
-
