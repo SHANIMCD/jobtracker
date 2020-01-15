@@ -3,11 +3,16 @@ import React from 'react'
 
 class Homepage extends React.Component {
 
+
   render() {
     return (
-      <h1>
-        hello
-      </h1>
+      <>
+      <div>
+        <h1>
+          Welcome to the job tracker
+        </h1>
+      </div>
+      </>
     )
   }
 }
