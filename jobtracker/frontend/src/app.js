@@ -8,11 +8,16 @@ import Homepage from './components/common/Homepage'
 
 import JobIndex from './components/jobs/jobsIndex'
 
+import Login from './components/auth/login'
+import Register from './components/auth/register'
+
 const App = () => (
 
   <BrowserRouter>
     <main>
       <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/jobs/" component={JobIndex} />
         <Route exact path="/" component={Homepage} />
       </Switch>

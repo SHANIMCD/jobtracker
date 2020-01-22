@@ -1,7 +1,70 @@
 
 body {
   background-color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
 
-  
+  h1 {
+    text-align: center;
+  }
+
+  // Home Page 
+  .homepage {
+    width: 50vw;
+    height: 90vh;
+    border: 1px solid black;
+    margin: 0 auto;  }
+
+
+  .job-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+
+    h2 {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 10px;
+    }
+    
+    .job-individual {
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      flex-basis: 15%;
+      justify-content: center;
+      text-align: center;
+      margin: 5px;
+      padding: 5px;
+      
+    }
+  }
+
+
+  // Register Page 
+
+  .form-container {
+      display: flex;  
+      flex-direction: column;
+      margin: 20%;
+      height: 100vh;
+      text-align: center;
+
+      input {
+      height: 20px;      
+      }
+
+      button {
+        max-width: fit-content;
+      }
+    }
+
+
+  // Login page 
+
+
 
 }
