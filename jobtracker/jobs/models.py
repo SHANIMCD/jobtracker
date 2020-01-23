@@ -28,6 +28,7 @@ class JobInfo(models.Model):
     post_url = models.CharField(max_length=200)
     resource_url = models.CharField(max_length=200)
     Description = models.TextField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
     job_status = models.ForeignKey(
         jobStatus,
         related_name='jobs',

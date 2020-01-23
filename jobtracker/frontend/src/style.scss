@@ -12,13 +12,37 @@ body {
     width: 50vw;
     height: 90vh;
     border: 1px solid black;
-    margin: 0 auto;  }
+    margin: 0 auto;
+    }
 
+  // Job search & Filter Component
+
+    .jobsearch-container {
+      display: flex;
+      justify-content: space-around;
+
+      .filter-container {
+        display: flex;
+
+        select {
+          align-self: center;
+        }
+      }
+
+      .jobsearch-box {
+        height: 20px;
+        width: 400px;
+        align-self: center;
+        
+      }
+    }
+
+    
 
   .job-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     
 
     h2 {

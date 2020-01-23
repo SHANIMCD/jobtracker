@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../lib/auth'
+// import Auth from '../lib/auth'
 
 
 
@@ -10,12 +10,7 @@ class Register extends React.Component {
     super()
 
     this.state = {
-      data: {
-        // username: '',
-        // email: '',
-        // password: '',
-        // passwordConfirmation: ''
-      }
+      data: {}
     }
 
 
