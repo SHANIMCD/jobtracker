@@ -1,6 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
-// import JobSearch from '../jobs/jobsearch'
+import Navbar from '../common/navbar'
 
 
 class JobsIndex extends React.Component {
@@ -51,8 +51,12 @@ class JobsIndex extends React.Component {
     if (!this.state.jobs) return null
     return (
       <>
+        <header>
+          <Navbar />
+        </header>
+
         <h1>
-          Jobs
+          Jobs List
         </h1>
 
         <div className="jobsearch-container" onChange={this.handleChange}>
@@ -73,26 +77,15 @@ class JobsIndex extends React.Component {
               <option value="Offer">Offer</option>
               <option value="Rejection">Rejected</option>
             </select>
-          
+
           </div>
         </div>
-          <div className="job-container">{this.filteredJobs().map(job =>
-            <div className="job-individual" key={job.id}>
-              <h2>{job.job_title}</h2>
-              <p>Created at: {job.created}</p>
-            </div>)}</div>
+        <div className="job-container">{this.filteredJobs().map(job =>
+          <div className="job-individual" key={job.id}>
+            <h2>{job.job_title}</h2>
+            <p>Created at: {job.created}</p>
+          </div>)}</div>
 
-
-
-        {/* <div className="job-container">
-          {this.state.jobs.map(job => (
-            <div className="job-individual" key={job.id}>
-              <h2>{job.job_title}</h2>
-
-              <p>Created at: {job.created}</p>
-            </div>
-          ))}
-        </div> */}
 
 
       </>

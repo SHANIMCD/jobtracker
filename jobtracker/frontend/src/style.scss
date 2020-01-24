@@ -7,12 +7,39 @@ body {
     text-align: center;
   }
 
+  // Nav Bar 
+  .nav-container {
+    display: flex;
+    justify-content: center;
+
+
+    .nav-button {
+     
+      border-radius: 10px;
+      text-decoration: none;
+      padding: 5px 10px 5px 10px;
+      margin: 0 4% 0 4%;
+      color: white;
+      border: 1px solid gray;
+      background-color: gray;
+      box-shadow: 3px 3px 4px rgb(82, 82, 82);      
+    }
+  }
+
+
   // Home Page 
+  // Header also controls position of NavBar
+  header {
+    display: flex;
+    justify-content: flex-start;
+    width: 95vw;
+  }
+
   .homepage {
-    width: 50vw;
-    height: 90vh;
+    border-radius: 20px;
+    
     border: 1px solid black;
-    margin: 0 auto;
+    margin-top: 1%;
     }
 
   // Job search & Filter Component
@@ -43,6 +70,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
     
 
     h2 {

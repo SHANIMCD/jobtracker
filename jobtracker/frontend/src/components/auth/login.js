@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/auth'
+import Navbar from '../common/navbar'
 
 
 class Login extends React.Component {
@@ -33,7 +34,7 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token)
         this.setState({ username: res.data.name })
-        console.log('Come on in', res.data )
+        console.log('Come on in', res.data)
         this.props.history.push('/jobs')
       })
   }
@@ -42,6 +43,9 @@ class Login extends React.Component {
   render() {
     return (
       <>
+        <header>
+          <Navbar />
+        </header>
         <h2 className="login-form-header">
           Log in:
         </h2>

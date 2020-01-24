@@ -1,4 +1,6 @@
 import React from 'react'
+import Navbar from '../common/navbar'
+
 
 
 class Homepage extends React.Component {
@@ -6,13 +8,20 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      
-      <div className="homepage">
-        <h1>
-          Welcome to the job tracker
-        </h1>
-      </div>
-      
+      <>
+
+        <div>
+          <header>
+            <Navbar />
+          </header>
+          <section className="homepage">
+            <h1>
+              Track Your Jobs
+            </h1>
+          </section>
+
+        </div>
+      </>
     )
   }
 }

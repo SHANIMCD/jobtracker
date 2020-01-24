@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import Auth from '../lib/auth'
-
+import Navbar from '../common/navbar'
 
 
 class Register extends React.Component {
@@ -27,16 +26,19 @@ class Register extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('/api/register', this.state.data )
+    axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
-      .catch(err => console.log( err.message ))
-    
+      .catch(err => console.log(err.message))
+
   }
 
 
   render() {
     return (
       <>
+        <header>
+          <Navbar />
+        </header>
         <h1>Register</h1>
 
         <form onSubmit={this.handleSubmit}>
