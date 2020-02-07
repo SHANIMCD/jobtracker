@@ -1,6 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
 import Navbar from '../common/navbar'
+import { Link } from 'react-router-dom'
 
 
 class JobsIndex extends React.Component {
@@ -9,6 +10,7 @@ class JobsIndex extends React.Component {
     super()
     this.state = {
       jobs: [],
+      company: [],
       job_status: 'All',
       search: ''
     }
@@ -48,6 +50,7 @@ class JobsIndex extends React.Component {
   render() {
     // console.log(this.state.jobs)
     console.log(this.filteredJobs())
+    // console.log(this.state.jobs.company[ company ] )
     if (!this.state.jobs) return null
     return (
       <>
@@ -81,10 +84,27 @@ class JobsIndex extends React.Component {
           </div>
         </div>
         <div className="job-container">{this.filteredJobs().map(job =>
+
+
+
+
           <div className="job-individual" key={job.id}>
-            <h2>{job.job_title}</h2>
-            <p>Created at: {job.created}</p>
-          </div>)}</div>
+            <Link to={`/jobs/${job.id}`}>
+              <h2>{job.job_title}</h2>
+
+
+              <div>{this.state.company.map(_comp =>
+                <div key={_comp.id}>
+                  <p>{_comp.company_name}</p>
+                </div>)}</div>
+
+
+
+              <p>Created at: {job.created}</p>
+            </Link> </div>)}</div>
+
+
+
 
 
 

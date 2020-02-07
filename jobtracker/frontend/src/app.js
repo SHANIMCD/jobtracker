@@ -7,6 +7,7 @@ import '../src/style.scss'
 import Homepage from './components/common/Homepage'
 
 import JobIndex from './components/jobs/jobsIndex'
+import JobIndividual from './components/jobs/jobindividual'
 
 import Login from './components/auth/login'
 import Register from './components/auth/register'
@@ -18,6 +19,7 @@ const App = () => (
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/jobs/:id" component={JobIndividual} />
         <Route path="/jobs/" component={JobIndex} />
         <Route exact path="/" component={Homepage} />
       </Switch>
