@@ -43,9 +43,7 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <header>
-          <Navbar />
-        </header>
+        
         <h2 className="login-form-header">
           Log in:
         </h2>
@@ -63,8 +61,9 @@ class Login extends React.Component {
               onChange={this.handlechange}
             />
             <button>Log In</button>
-
+            <button><a href="/register">Register</a></button>
           </form>
+          
 
         </div>
 

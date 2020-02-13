@@ -8,8 +8,8 @@ import Homepage from './components/common/Homepage'
 
 import JobIndex from './components/jobs/jobsIndex'
 import JobIndividual from './components/jobs/jobindividual'
+// import AddAJob from './components/jobs/addAJob'
 
-import Login from './components/auth/login'
 import Register from './components/auth/register'
 
 const App = () => (
@@ -17,10 +17,10 @@ const App = () => (
   <BrowserRouter>
     <main>
       <Switch>
-        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/jobs/:id" component={JobIndividual} />
         <Route path="/jobs/" component={JobIndex} />
+        {/* <Route path="/create" component={AddAJob} /> */}
         <Route exact path="/" component={Homepage} />
       </Switch>
     </main>

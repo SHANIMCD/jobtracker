@@ -18,7 +18,7 @@ class NestedCompanyInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CompanyInfo
-        fields = ('id', 'company_name', 'Address', 'Industry')
+        fields = ('company_name', 'Address', 'Industry')
 
 class CompanyInfoSerializer(serializers.ModelSerializer):
 
@@ -36,17 +36,18 @@ class jobStatusSerializer(serializers.ModelSerializer):
 class JobInfoSerializer(serializers.ModelSerializer):
 
     job_status = NestedjobStatusSerializer()
-    company = NestedCompanyInfoSerializer(many=True)
+    companies = NestedCompanyInfoSerializer(many=True)
 
 
     def create(self, data):
-        companies_data = data.pop('company')
         jobstatus_data = data.pop('job_status')
+        companies_data = data.pop('companies')
+        
         
 
         jobinfo = JobInfo(**data)
         jobinfo.job_status = jobStatus.objects.get(**jobstatus_data)
-        companies = [CompanyInfo.objects.get(**companies_data) for companies_data in companies_data]
+        companies = [CompanyInfo.objects.get(**company_data) for company_data in companies_data]
         jobinfo.save()
         jobinfo.companies.set(companies)
         return jobinfo
@@ -62,14 +63,14 @@ class JobInfoSerializer(serializers.ModelSerializer):
         jobinfo.Description = data.get('Description', jobinfo.Description)
 
         jobinfo.job_status = jobStatus.objects.get(**jobstatus_data)
-        company = [CompanyInfo.objects.get(**company_data) for company_data in companies_data]
+        companies = [CompanyInfo.objects.get(**company_data) for company_data in companies_data]
 
         jobinfo.save()
-        jobinfo.company.set(company)
+        jobinfo.companies.set(companies)
         return jobinfo
 
 
     class Meta:
         model = JobInfo
-        fields = ('id', 'job_title', 'salary', 'post_url', 'created', 'resource_url', 'job_status', 'company')
+        fields = ('id', 'job_title', 'salary', 'post_url', 'created', 'resource_url', 'job_status', 'companies')
 

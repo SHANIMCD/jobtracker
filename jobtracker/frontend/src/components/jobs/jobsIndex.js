@@ -2,6 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import Navbar from '../common/navbar'
 import { Link } from 'react-router-dom'
+import AddAJob from './addAJob'
 
 
 class JobsIndex extends React.Component {
@@ -10,12 +11,13 @@ class JobsIndex extends React.Component {
     super()
     this.state = {
       jobs: [],
-      company: [],
+      companies: [],
       job_status: 'All',
       search: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.addJobOpen = this.addJobOpen.bind(this)
   }
 
   componentDidMount() {
@@ -46,6 +48,19 @@ class JobsIndex extends React.Component {
   }
 
 
+  addJobOpen() {
+    window.addEventListener('DOMContendLoaded', () => {
+      const AddJobComponent = document.querySelector('.form-container')
+      const AddAJob = document.querySelectorAll('.add-job-component > h1')
+
+      AddAJob.addEventListener('click', () => {
+        AddJobComponent.style.display = 'none'
+
+      })
+    })
+  }
+
+
 
   render() {
     // console.log(this.state.jobs)
@@ -59,52 +74,63 @@ class JobsIndex extends React.Component {
         </header>
 
         <h1>
-          Jobs List
+          Jobs
         </h1>
 
-        <div className="jobsearch-container" onChange={this.handleChange}>
+        <div className="flex-job-components">
+          <div>
 
-          <input className="jobsearch-box"
-            name="search"
-            placeholder="Search by job title"
-          ></input>
+            <div className="jobsearch-container" onChange={this.handleChange}>
 
-          <div className="filter-container" onChange={this.handleChange}>
-            <p>Filter by Job Status</p>
-            <select onChange={this.handleChange} name="job_status">
-              <option value="All">All</option>
-              <option value="Listed Application">Listed Application</option>
-              <option value="Speculative Application">Speculative Application</option>
-              <option value="Code Test">Code Test</option>
-              <option value="Interview stage 1">Interview</option>
-              <option value="Offer">Offer</option>
-              <option value="Rejection">Rejected</option>
-            </select>
+              <input className="jobsearch-box"
+                name="search"
+                placeholder="Search by job title"
+              ></input>
 
+              <div className="filter-container" onChange={this.handleChange}>
+
+                <select onChange={this.handleChange} name="job_status">
+                  <option value="All">All</option>
+                  <option value="Listed Application">Listed Application</option>
+                  <option value="Speculative Application">Speculative Application</option>
+                  <option value="Code Test">Code Test</option>
+                  <option value="Interview stage 1">Interview</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Rejection">Rejected</option>
+                </select>
+
+              </div>
+            </div>
+            <div className="job-container">{this.filteredJobs().map(job =>
+
+              <div className="job-individual" key={job.id}>
+                <Link to={`/jobs/${job.id}`}>
+                  <h2>{job.job_title}</h2>
+
+
+                  <div>
+                    {job.companies.map((comp, id) => (
+                      <>
+                        <p key={id}>
+                          {comp.company_name}
+                        </p>
+                      </>
+                    ))
+                    }
+                  </div>
+
+
+
+
+                  {/* <p>Created at: {job.created}</p> */}
+                </Link> </div>)}</div>
+          </div>
+          
+          <div className="add-job-component">
+            
+            <AddAJob />
           </div>
         </div>
-        <div className="job-container">{this.filteredJobs().map(job =>
-
-
-
-
-          <div className="job-individual" key={job.id}>
-            <Link to={`/jobs/${job.id}`}>
-              <h2>{job.job_title}</h2>
-
-
-              <div>{this.state.company.map(_comp =>
-                <div key={_comp.id}>
-                  <p>{_comp.company_name}</p>
-                </div>)}</div>
-
-
-
-              <p>Created at: {job.created}</p>
-            </Link> </div>)}</div>
-
-
-
 
 
 

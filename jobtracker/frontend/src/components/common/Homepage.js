@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../common/navbar'
 
-
+import Login from '../auth/login'
 
 class Homepage extends React.Component {
 
@@ -18,6 +18,7 @@ class Homepage extends React.Component {
             <h1>
               Track Your Jobs
             </h1>
+            <Login />
           </section>
 
         </div>

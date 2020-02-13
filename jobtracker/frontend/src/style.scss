@@ -18,7 +18,7 @@ body {
       border-radius: 10px;
       text-decoration: none;
       padding: 5px 10px 5px 10px;
-      margin: 0 4% 0 4%;
+      // margin: 0 4% 0 4%;
       color: white;
       border: 1px solid gray;
       background-color: gray;
@@ -44,12 +44,21 @@ body {
 
   // Job search & Filter Component
 
+  .flex-job-components {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+   
+  }
+
     .jobsearch-container {
       display: flex;
       justify-content: space-around;
+      
 
       .filter-container {
         display: flex;
+        
 
         select {
           align-self: center;
@@ -70,8 +79,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
-    
+    align-content: flex-start;
+    width: 50vw;
 
     h2 {
       font-size: 15px;
@@ -86,7 +95,7 @@ body {
       border: 1px solid black;
       display: flex;
       flex-direction: column;
-      flex-basis: 15%;
+      flex-basis: 25%;
       justify-content: center;
       text-align: center;
       margin: 5px;
@@ -95,18 +104,63 @@ body {
     }
   }
 
+  .add-job-component {
+    
+    h1 {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      padding: 10px;
+      border-radius: 20px;
+     
+      
+    }
+
+    .form-container {
+      // display: none;
+    }
+    
+
+
+
+  }
 
   // Register Page 
 
   .form-container {
-      display: flex;  
-      flex-direction: column;
-      margin: 20%;
-      height: 100vh;
+      margin: 10%;
+      
       text-align: center;
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+      }
+
+      .subform-container {
+        display: flex;
+        flex-direction: column;
+
+        .subform-button {
+          margin-top: 5px;
+          margin-bottom: 20px;
+        }
+
+        h6 {
+          margin: 25px 25px 25px 5px;
+          text-align: left;
+        }
+      }
 
       input {
       height: 20px;      
+      padding: 5px;
+      margin: 3px;
+      }
+
+      textarea {
+        height: 100px;
+        margin: 3px;
       }
 
       button {
@@ -116,7 +170,10 @@ body {
 
 
   // Login page 
-
+    
+  .login-form-header {
+    text-align: center;
+  }
 
 
 }

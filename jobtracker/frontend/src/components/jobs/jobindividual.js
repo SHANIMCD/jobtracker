@@ -1,28 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-
-
-// const JobIndividual = ({ job_title, salary, post_url, resource_url, Address, id, job_status: { job_status }, companies }) => (
-
-//   <div key={id}>
-//     <h2 key={job_title}>{job_title}</h2>
-//     <p key={salary}>{salary}</p>
-//     <p key={post_url}>{post_url}</p>
-//     <p key={resource_url}>{resource_url}</p>
-//     {/* <p key={job_status}>{job_status}</p> */}
-
-
-
-
-//   </div>
-// )
-
-
-
-
-
-
+import Navbar from '../common/navbar'
 
 
 class JobIndividual extends React.Component {
@@ -31,10 +10,16 @@ class JobIndividual extends React.Component {
     super()
 
     this.state = {
+      data: {
+        job_status: {
+          job_status: 'All'
+        }
+      },
       job: null,
-      companies: [],
-      job_status: []
+      companies: []
+      // job_status: 'All'
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -45,14 +30,37 @@ class JobIndividual extends React.Component {
       .catch(err => console.log(err))
   }
 
+
+  handleChange(e) {
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    const errors = { ...this.state.errors, [e.target.name]: '' }
+    this.setState({ data, errors })
+
+  }
+
+  filterDropdown() {
+    if (this.state.job_status === 'All') {
+      return this.state.job_status
+    }
+    return (this.state.job_status)
+  }
+
+
+
+
   render() {
 
     if (!this.state.job) return null
     if (!this.state.job.job_status) return null
-    const { job, company, job_status } = this.state
+    const { job } = this.state
     console.log(job)
     return (
+
       <>
+
+        <Navbar />
+
+
         {/* job info  */}
         <div>
           <h2>{job.job_title}</h2>
@@ -62,14 +70,14 @@ class JobIndividual extends React.Component {
 
 
           {/* Job Status  */}
-          <div>{job.job_status.job_status}</div>
+          <h3>{job.job_status.job_status}</h3>
 
 
 
 
           {/* nested company info */}
           <div>
-            {job.company.map((comp, id) => (
+            {job.companies.map((comp, id) => (
               <>
                 <p key={id}>
                   {comp.company_name}
@@ -85,11 +93,6 @@ class JobIndividual extends React.Component {
             }
 
           </div>
-
-
-
-
-
 
         </div>
 
@@ -108,3 +111,6 @@ class JobIndividual extends React.Component {
 }
 
 export default JobIndividual
+
+
+

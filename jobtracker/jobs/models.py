@@ -36,7 +36,7 @@ class JobInfo(models.Model):
         null=True
     )
 
-    company = models.ManyToManyField(
+    companies = models.ManyToManyField(
         CompanyInfo,
         related_name='jobs',
         blank=True
