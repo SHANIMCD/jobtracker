@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 import Navbar from '../common/navbar'
 
 
@@ -16,8 +16,8 @@ class JobIndividual extends React.Component {
         }
       },
       job: null,
-      companies: []
-      // job_status: 'All'
+      companies: [],
+      job_status: 'All'
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -44,7 +44,6 @@ class JobIndividual extends React.Component {
     }
     return (this.state.job_status)
   }
-
 
 
 
@@ -91,8 +90,9 @@ class JobIndividual extends React.Component {
               </>
             ))
             }
-
           </div>
+          <Link to={`/jobs/${job._id}/edit`}>Edit</Link>
+          <button>Delete</button>
 
         </div>
 

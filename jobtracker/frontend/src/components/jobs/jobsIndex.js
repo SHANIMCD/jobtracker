@@ -2,6 +2,8 @@ import React from 'react'
 import Axios from 'axios'
 import Navbar from '../common/navbar'
 import { Link } from 'react-router-dom'
+// import AddAJob from './addAJob'
+// import JobForm from './jobform'
 import AddAJob from './addAJob'
 
 
@@ -17,7 +19,7 @@ class JobsIndex extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.addJobOpen = this.addJobOpen.bind(this)
+    // this.addJobOpen = this.addJobOpen.bind(this)
   }
 
   componentDidMount() {
@@ -48,17 +50,17 @@ class JobsIndex extends React.Component {
   }
 
 
-  addJobOpen() {
-    window.addEventListener('DOMContendLoaded', () => {
-      const AddJobComponent = document.querySelector('.form-container')
-      const AddAJob = document.querySelectorAll('.add-job-component > h1')
+  // addJobOpen() {
+  //   window.addEventListener('DOMContendLoaded', () => {
+  //     const AddJobComponent = document.querySelector('.form-container')
+  //     const AddAJob = document.querySelectorAll('.add-job-component > h1')
 
-      AddAJob.addEventListener('click', () => {
-        AddJobComponent.style.display = 'none'
+  //     AddAJob.addEventListener('click', () => {
+  //       AddJobComponent.style.display = 'none'
 
-      })
-    })
-  }
+  //     })
+  //   })
+  // }
 
 
 
@@ -125,10 +127,12 @@ class JobsIndex extends React.Component {
                   {/* <p>Created at: {job.created}</p> */}
                 </Link> </div>)}</div>
           </div>
-          
+
           <div className="add-job-component">
-            
-            <AddAJob />
+
+            <AddAJob
+             
+            />
           </div>
         </div>
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../common/navbar'
+// import { AutoplaySlider, AwesomeSliderStyles } from 'react-awesome-slider/hoc/autoplay'
 
-import Login from '../auth/login'
+// import Login from '../auth/login'
 
 class Homepage extends React.Component {
 
@@ -18,7 +19,8 @@ class Homepage extends React.Component {
             <h1>
               Track Your Jobs
             </h1>
-            <Login />
+            
+
           </section>
 
         </div>

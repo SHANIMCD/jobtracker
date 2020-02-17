@@ -9,8 +9,9 @@ import Homepage from './components/common/Homepage'
 import JobIndex from './components/jobs/jobsIndex'
 import JobIndividual from './components/jobs/jobindividual'
 // import AddAJob from './components/jobs/addAJob'
-
+import EditJob from './components/jobs/jobedit'
 import Register from './components/auth/register'
+import Login from './components/auth/login'
 
 const App = () => (
 
@@ -18,9 +19,10 @@ const App = () => (
     <main>
       <Switch>
         <Route path="/register" component={Register} />
+        <Route path="/jobs/:id/edit" component={EditJob} />
         <Route path="/jobs/:id" component={JobIndividual} />
         <Route path="/jobs/" component={JobIndex} />
-        {/* <Route path="/create" component={AddAJob} /> */}
+        <Route path="/login" component={Login} />
         <Route exact path="/" component={Homepage} />
       </Switch>
     </main>
