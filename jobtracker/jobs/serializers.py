@@ -8,17 +8,19 @@ class NestedJobInfoSerializer(serializers.ModelSerializer):
         model = JobInfo
         fields = ('id', 'job_title')
 
+
+class NestedCompanyInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CompanyInfo
+        fields = ('company_name', 'Address', 'Industry')        
+
 class NestedjobStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = jobStatus
         fields = ('id', 'job_status')
 
-class NestedCompanyInfoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CompanyInfo
-        fields = ('company_name', 'Address', 'Industry')
 
 class CompanyInfoSerializer(serializers.ModelSerializer):
 
@@ -53,7 +55,7 @@ class JobInfoSerializer(serializers.ModelSerializer):
         return jobinfo
 
     def update(self, jobinfo, data):
-        companies_data = data.pop('comapny')
+        companies_data = data.pop('companies')
         jobstatus_data = data.pop('job_status')
 
         jobinfo.job_title = data.get('job_title', jobinfo.job_title)
@@ -72,5 +74,5 @@ class JobInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JobInfo
-        fields = ('id', 'job_title', 'salary', 'post_url', 'created', 'resource_url', 'job_status', 'companies')
+        fields = ('id', 'job_title', 'salary', 'post_url', 'created', 'Description', 'resource_url', 'job_status', 'companies')
 

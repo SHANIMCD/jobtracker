@@ -1,6 +1,6 @@
 import React from 'react'
 
-const JobForm = ({ data, handleChange, handleSubmit, companies: [{ company_name, Address, Industry }], errors }) => (
+const JobForm = ({ data, handleChange, handleSubmit, company_name, Address, Industry, errors }) => (
   <div className="form-container">
     <form
       onSubmit={handleSubmit}>

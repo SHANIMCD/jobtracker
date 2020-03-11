@@ -47,10 +47,11 @@ class EditJob extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('edits')
+    console.log('changes made')
     const jobId = this.props.match.params.id
-    axios.put(`/api/jobs/${jobId}`, this.state.data, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    axios.put(`/api/jobs/${jobId}/`, this.state.data, {
+    //   headers: { Authorization: `Bearer ${Auth.getToken()}` 
+    // }
     })
       .then(res => {
         this.props.history.push(`/jobs/${res.data.id}`)

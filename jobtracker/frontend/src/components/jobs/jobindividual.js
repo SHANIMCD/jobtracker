@@ -66,6 +66,7 @@ class JobIndividual extends React.Component {
           <p>{job.salary}</p>
           <p>{job.post_url}</p>
           <p>{job.resource_url}</p>
+          <p>{job.Description}</p>
 
 
           {/* Job Status  */}
@@ -91,7 +92,7 @@ class JobIndividual extends React.Component {
             ))
             }
           </div>
-          <Link to={`/jobs/${job._id}/edit`}>Edit</Link>
+          <Link to={`/jobs/${job.id}/edit`}>Edit</Link>
           <button>Delete</button>
 
         </div>
