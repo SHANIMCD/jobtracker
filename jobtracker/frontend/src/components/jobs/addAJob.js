@@ -1,6 +1,6 @@
 import React from 'React'
 import axios from 'axios'
-import Auth from '../lib/auth'
+// import Auth from '../lib/auth'
 
 
 class AddAJob extends React.Component {
@@ -18,12 +18,15 @@ class AddAJob extends React.Component {
         job_status: {
           job_status: ''
         },
-        companies: [{
-          company_name: '',
-          Address: '',
-          Industry: ''
-        }]
-      }
+        companies: [
+          {
+            company_name: '',
+            Address: '',
+            Industry: ''
+          }
+        ]
+      },
+      errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.addCompany = this.addCompany.bind(this)
@@ -48,7 +51,7 @@ class AddAJob extends React.Component {
     console.log('sent')
     console.log()
     axios.post('/api/jobs', this.state.data, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      // headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
         this.props.history.push(`/jobs/${res.data.id}`)
@@ -71,32 +74,32 @@ class AddAJob extends React.Component {
             onSubmit={this.handleSubmit}>
             <input
               name="job_title"
-              value={this.state.data.job_title}
+              // value={this.state.data.job_title}
               placeholder="Job Title"
             />
             <input
               name="salary"
-              value={this.state.data.salary}
+              // value={this.state.data.salary}
               placeholder="Salary"
             />
             <input
               name="post_url"
-              value={this.state.data.post_url}
+              // value={this.state.data.post_url}
               placeholder="Post URL"
             />
             <input
               name="resource_url"
-              value={this.state.data.resource_url}
+              // value={this.state.data.resource_url}
               placeholder="Resource URL"
             />
             <textarea
               name="Description"
-              value={this.state.data.Description}
+              // value={this.state.data.Description}
               placeholder="Description"
             />
             <select
               name="job_status"
-              value={this.state.data.job_status}
+              // value={this.state.data.job_status}
               onChange={this.onChange}
               placeholder="Job Status"
             >
@@ -110,24 +113,26 @@ class AddAJob extends React.Component {
             </select>
             {this.state.data.companies.map((_comp, index) => {
               return (
-                <div className="subform-container" value={this.state.data.companies}  key={index}>
+                <div className="subform-container"
+                  // value={this.state.data.companies}  
+                  key={index}>
                   <h6>Add Company</h6>
                   <input
                     onChange={this.handleChange}
-                    name="company_name"                    
-                    // value={_comp.company_name}
+                    name="company_name"
+                    value={_comp.company_name}
                     placeholder="Company Name"
                   />
                   <textarea
                     onChange={this.handleChange}
                     name="Address"
-                    // value={_comp.Address}
+                    value={_comp.Address}
                     placeholder="Address"
                   />
                   <input
                     onChange={this.handleChange}
-                    name="Industry"                   
-                    // value={_comp.Industry}
+                    name="Industry"
+                    value={_comp.Industry}
                     placeholder="Industry"
                   />
                   <button onClick={this.addCompany} className="subform-button">Add another company</button>

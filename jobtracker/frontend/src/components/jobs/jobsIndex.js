@@ -19,7 +19,7 @@ class JobsIndex extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    // this.addJobOpen = this.addJobOpen.bind(this)
+    this.addJobOpen = this.addJobOpen.bind(this)
   }
 
   componentDidMount() {
@@ -50,34 +50,52 @@ class JobsIndex extends React.Component {
   }
 
 
-  // addJobOpen() {
-  //   window.addEventListener('DOMContendLoaded', () => {
-  //     const AddJobComponent = document.querySelector('.form-container')
-  //     const AddAJob = document.querySelectorAll('.add-job-component > h1')
+  addJobOpen() {
+    window.addEventListener('DOMContentLoaded', () => {
+      const AddJobForm = document.querySelector('.add-job-component')
+      const selected = document.querySelector('.clickfunc') 
+      const removeButton = document.querySelector('#funcremove')
 
-  //     AddAJob.addEventListener('click', () => {
-  //       AddJobComponent.style.display = 'none'
+      selected.addEventListener('click', () => {
+        AddJobForm.style.display = 'block'
+        removeButton.style.display = 'block'
+        selected.style.display = 'none'
 
-  //     })
-  //   })
-  // }
+      })
+
+      removeButton.addEventListener('click', () => {
+        AddJobForm.style.display = 'none'
+        selected.style.display = 'block'
+        removeButton.style.display = 'none'
+      })
+
+    })   
+  }
 
 
 
   render() {
     // console.log(this.state.jobs)
     console.log(this.filteredJobs())
-    // console.log(this.state.jobs.company[ company ] )
     if (!this.state.jobs) return null
     return (
       <>
         <header>
-          <Navbar />
+          <Navbar/>
         </header>
 
         <h1>
           Jobs
         </h1>
+        <h2
+          className="clickfunc"
+          onClick={this.addJobOpen()}>Add Job</h2>
+
+        <h2 id="funcremove" className="clickfunc">Remove</h2>
+        <div className="add-job-component">
+          <AddAJob
+          />
+        </div>
 
         <div className="flex-job-components">
           <div>
@@ -106,7 +124,7 @@ class JobsIndex extends React.Component {
             <div className="job-container">{this.filteredJobs().map(job =>
 
               <div className="job-individual" key={job.id}>
-                <Link to={`/jobs/${job.id}`}>
+                <Link to={`/jobs/${job.id}`} className="job-ind-link">
                   <h2>{job.job_title}</h2>
 
 
@@ -128,13 +146,9 @@ class JobsIndex extends React.Component {
                 </Link> </div>)}</div>
           </div>
 
-          <div className="add-job-component">
 
-            <AddAJob
-             
-            />
-          </div>
         </div>
+
 
 
 

@@ -57,44 +57,73 @@ class JobIndividual extends React.Component {
 
       <>
 
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
+
+
 
 
         {/* job info  */}
-        <div>
-          <h2>{job.job_title}</h2>
-          <p>{job.salary}</p>
-          <p>{job.post_url}</p>
-          <p>{job.resource_url}</p>
-          <p>{job.Description}</p>
+        <div className="showpage-render">
+          <div className="showpage-title">
+            <h2>{job.job_title}</h2>
 
+            <div className="showpage-company-title">
+              {job.companies.map((comp, id) => (
+                <>
+                  <p key={id}>
+                    {comp.company_name}
+                  </p>
+                </>
+              ))}
+            </div>
 
-          {/* Job Status  */}
-          <h3>{job.job_status.job_status}</h3>
-
-
-
-
-          {/* nested company info */}
-          <div>
-            {job.companies.map((comp, id) => (
-              <>
-                <p key={id}>
-                  {comp.company_name}
-                </p>
-                <p>
-                  {comp.Address}
-                </p>
-                <p>
-                  {comp.Industry}
-                </p>
-              </>
-            ))
-            }
           </div>
-          <Link to={`/jobs/${job.id}/edit`}>Edit</Link>
-          <button>Delete</button>
 
+          <div className="show-page-body">
+
+            <p>Salary: £{job.salary}</p>
+            <p>Company Website: {job.post_url}</p>
+            <p>Job post/resource link: {job.resource_url}</p>
+            <div className="description-container">
+              <h4>
+                Description/Notes:
+              </h4>
+              <p className="show-page-description">{job.Description}</p>
+            </div>
+            
+
+
+
+
+            {/* Job Status  */}
+            <h3>Application status: {job.job_status.job_status}</h3>
+
+
+
+
+            {/* nested company info */}
+            <div>
+              {job.companies.map((comp, id) => (
+                <>
+                  <p key={id}>
+                    {comp.company_name}
+                  </p>
+                  <p>
+                    {comp.Address}
+                  </p>
+                  <p>
+                    {comp.Industry}
+                  </p>
+                </>
+              ))
+              }
+            </div>
+            <button><Link to={`/jobs/${job.id}/edit`}>Edit</Link></button>
+            <button>Delete</button>
+
+          </div>
         </div>
 
 
